@@ -1,0 +1,100 @@
+.news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &_list {
+        width: 100%;
+        padding: clamp(24px, 4vw, 48px);
+        border: 1px solid var(--neon);
+        border-radius: 32px;
+        box-shadow: 0 0 8px var(--neon);
+    }
+
+    &_item {
+        border-bottom: 1px solid rgba(0, 242, 255, 0.3);
+        list-style: none;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &_toggle {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: clamp(16px, 3vw, 24px) clamp(16px, 4vw, 56px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        background: none;
+        cursor: pointer;
+        text-align: left;
+        position: relative;
+        transition: 0.3s;
+
+        & time {
+            color: var(--neon);
+            margin-right: 16px;
+            white-space: nowrap;
+        }
+
+        .news_arrow {
+            width: 20px;
+            height: 20px;
+            background: url("../img/arrow_right.png") center/contain no-repeat;
+            transition: transform 0.3s;
+        }
+
+        @media (width <=768px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        @media (width <=375px) {
+            padding: 20px 0;
+
+            & h3 {
+                font-size: 16px;
+                white-space: normal;
+            }
+        }
+    }
+
+    &_item.open .news_arrow {
+        transform: rotate(90deg);
+    }
+
+    .news_text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &_content {
+        max-height: 0;
+        padding: 0 clamp(16px, 4vw, 56px);
+        color: var(--white);
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(-5px);
+        transition:
+            max-height 0.4s ease,
+            opacity 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    &_item.open .news_content {
+        max-height: 1000px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

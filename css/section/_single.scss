@@ -1,0 +1,124 @@
+.single {
+    &_main {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 32px;
+        align-items: stretch;
+
+        @media (width <=768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &_media {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &_img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            display: block;
+
+            @media (width <=768px) {
+                height: 240px;
+            }
+        }
+    }
+
+    &_info {
+        color: var(--white);
+
+
+        & .single_title {
+            border-bottom: 1px solid rgba(255, 255, 255, .25);
+            padding-bottom: 12px;
+        }
+
+        & .single_row {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            align-items: center;
+            gap: 16px;
+            margin: 14px 0;
+
+            & .single_price {
+                font-size: var(--font-md);
+            }
+        }
+    }
+
+    &_qty {
+        max-width: 160px;
+        display: inline-flex;
+        justify-content: center;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: var(--white);
+        border: 1px solid var(--black);
+
+
+        &_btn {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        &_input {
+            width: 64px;
+            border: 0;
+            text-align: center;
+            outline: none;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+
+    &_cart_btn {
+        margin-top: 18px;
+        width: min(360px, 100%);
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid var(--neon);
+        background: var(--btn_background);
+        color: var(--white);
+        cursor: pointer;
+        transition: 0.6s ease;
+
+
+        &:hover {
+            color: var(--black);
+            background-color: var(--white);
+        }
+    }
+
+    &_explanation {
+        max-width: 980px;
+        margin: 0 auto;
+        margin-top: 28px;
+        color: #fff;
+
+        &_title {
+            margin: 0 0 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, .25);
+            text-align: center;
+        }
+
+        &_text {
+            line-height: 1.9;
+        }
+
+    }
+
+
+}

@@ -1,0 +1,105 @@
+.hamburger_btn {
+    display: none;
+
+    @media (width <=767px) {
+        display: flex;
+        width: 36px;
+        height: 40px;
+        position: absolute;
+        /* ★header_inner relative 前提 */
+        right: 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--white);
+        transition: 0.3s;
+
+        &:nth-child(1) {
+            top: 8px;
+        }
+
+        &:nth-child(2) {
+            top: 20px;
+        }
+
+        &:nth-child(3) {
+            top: 32px;
+        }
+    }
+}
+
+.header.open .hamburger_btn span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 19px;
+}
+
+.header.open .hamburger_btn span:nth-child(2) {
+    opacity: 0;
+}
+
+.header.open .hamburger_btn span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 19px;
+}
+
+.header_drawer {
+    display: none;
+}
+
+@media (width <=767px) {
+    .header_drawer {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+    }
+
+    .header_drawer_nav {
+        position: absolute;
+        top: clamp(64px, 7vw, 96px);
+        right: 0;
+        width: min(320px, 86vw);
+        height: calc(100dvh - clamp(64px, 7vw, 96px));
+        background: var(--white);
+        padding: 24px;
+        transform: translateX(100%);
+        transition: 0.25s;
+    }
+
+    .header_drawer_list {
+        display: grid;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .header_drawer_link {
+        color: var(--black);
+        font-size: 18px;
+        display: block;
+        padding: 12px 8px;
+        transition: 0.5s;
+    }
+
+    .header_drawer_link:hover {
+        border-bottom: 1px solid var(--white);
+    }
+
+    .header.open .header_drawer {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .header.open .header_drawer_nav {
+        transform: translateX(0);
+    }
+}

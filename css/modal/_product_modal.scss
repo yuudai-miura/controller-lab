@@ -1,0 +1,199 @@
+.product_modal_btn {
+    position: absolute;
+    top: 64px;
+    left: 18px;
+    display: flex;
+    place-items: center;
+    padding: 0 8px;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    & p {
+        color: var(--white);
+    }
+}
+
+.product_modal_img {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .35);
+    border: 1px solid rgba(255, 255, 255, .25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img {
+        width: 22px;
+        height: 22px;
+        display: block;
+    }
+}
+
+.product {
+    &>.product_inner.inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    &_modal {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, .55);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease, visibility .25s ease;
+
+        &.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        &.open .product_modal_inner {
+            transform: translateX(0);
+        }
+
+        &_inner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: min(360px, 88vw);
+            background: var(--white);
+            box-shadow: -20px 0 60px rgba(0, 0, 0, .35);
+            padding: 18px 18px 20px;
+            border-left: 1px solid rgba(0, 0, 0, .08);
+            transform: translateX(100%);
+            transition: transform .25s ease;
+        }
+
+        &_title {
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: .1em;
+            color: var(--black);
+        }
+
+        &_back_btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, .1);
+            background: #fff;
+            cursor: pointer;
+
+            & span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 18px;
+                height: 2px;
+                background: #222;
+                transform-origin: center;
+
+                &:first-child {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+
+                &:last-child {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+            }
+        }
+
+        &_group {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(0, 0, 0, .08);
+        }
+
+        &_label {
+            margin: 0 0 8px;
+            font-size: 12px;
+            letter-spacing: .08em;
+            color: #333;
+        }
+
+        &_list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        &_item {
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, .04);
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover {
+                background-color: var(--btn_background);
+                color: var(--white);
+            }
+
+            &.is-active {
+                background: rgba(0, 0, 0, .12);
+                font-weight: 600;
+            }
+        }
+
+        &_apply_group {
+            margin-top: 18px;
+            display: flex;
+            gap: 12px;
+        }
+
+        &_reset {
+            flex: 1;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 1px solid rgba(0, 0, 0, .12);
+            color: #111;
+            background: #fff;
+            transition: 0.5s;
+
+            &:hover {
+                background: var(--btn_background);
+            }
+        }
+
+        &_apply {
+            flex: 1;
+            height: 44px;
+            border-radius: 12px;
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            background: #111;
+            letter-spacing: .12em;
+            transition: 0.25s;
+
+            &:hover {
+                transform: scale(1.01);
+                box-shadow: 1px 1px 2px var(--black);
+            }
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .product_modal_btn {
+        top: 12px;
+        right: 12px;
+        left: auto;
+    }
+}
